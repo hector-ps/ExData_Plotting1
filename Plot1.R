@@ -1,4 +1,3 @@
-
 # Getting the names of the columns.
 data.names <- read.table("household_power_consumption.txt", 
                     header = FALSE,
@@ -21,9 +20,8 @@ colnames(consumption) <- data.names
 
 # Editting the "Date" column to be *Date Type*
 consumption$Date <- as.Date(consumption$Date, "%d/%m/%Y")
-#consumption$Time <- as.POSIXct(consumption$Time, "%H:%M:%S")
 
-# Time <- paste(consumption$Date, consumption$Time)
+# Editting the "Time" column to be a mixture of Date and Time
 consumption$Time <- strptime(paste(consumption$Date, consumption$Time), "%Y-%m-%d %H:%M:%S")
 
 png("plot1.png", width=480, height=480)
